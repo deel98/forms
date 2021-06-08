@@ -18,7 +18,7 @@ export class AgregarComponent implements OnInit {
     this.formularioCreado = this.formBuilder.group({
       nombre: ['David', Validators.required],
       correo: ['', Validators.compose([Validators.required, Validators.email])],
-      contrasena: [
+      password: [
         '',
         Validators.compose([Validators.required, Validators.minLength(8)]),
       ],
