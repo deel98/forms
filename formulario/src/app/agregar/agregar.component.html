@@ -47,11 +47,26 @@
         </div>
 
 
-        <button [disabled]="!formularioCreado.valid" class="btn btn-primary" (click)="agregar()">Agregar</button>
+        <button *ngIf="esNuevo" [disabled]="!formularioCreado.valid" class="btn btn-primary"
+            (click)="agregar()">Agregar</button>
+
+        <button *ngIf="!esNuevo" [disabled]="!formularioCreado.valid" class="btn btn-danger"
+            (click)="editar()">Editar</button>
+
 
 
 
     </form>
 </div>
-<p>{{formularioCreado.valid }}</p>
-<p>{{formularioCreado.value | json}}</p>
+<!-- <p>{{formularioCreado.valid }}</p>
+<p>{{formularioCreado.value | json}}</p> -->
+
+<div *ngFor="let usuario of usuarios; let posicion = index" class="container border">
+    <h4>{{usuario.nombre}} Tiene la posicion {{posicion}}</h4>
+    <p>{{usuario.correo}}</p>
+    <p>{{usuario.password}}</p>
+
+
+    <button (click)="editarUsuario(posicion)">Editar</button>
+    <button (click)="eliminarUsuario(posicion)">Eliminar</button>
+</div>
